@@ -34,6 +34,8 @@ public class Character {
 		recordPosition();
 	}
 	
+	
+	// from a string with a sequence of characters 'N/S/O/E' (ignores everyother option)
 	public void readCommands(String commands) {
 		for(int i = 0; i < commands.length(); i++) {
 			move(commands.charAt(i));

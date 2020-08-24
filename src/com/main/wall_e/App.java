@@ -12,7 +12,7 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class App extends JFrame implements KeyListener{
+public class App extends JFrame {
 
 	private static Character character;
 	private static JFrame mainFrame = new JFrame("Wall-E");
@@ -31,7 +31,7 @@ public class App extends JFrame implements KeyListener{
 	}
 	
 	public void paint(Graphics g) {
-		mainFrame.paint(g);
+		panel.paintComponents(g);
 	    Graphics2D g2 = (Graphics2D) g;
 	    drawGrid(g2);
 	    drawCharacter(g2);
@@ -48,7 +48,8 @@ public class App extends JFrame implements KeyListener{
 			System.out.println("Type directions for Wall-E to go");
 			
 			commands = input.nextLine();
-			character.readCommands(commands);
+			character.readCommands(commands);	
+			panel.repaint();	
 			app.repaint();
 		}
 	}
@@ -89,38 +90,6 @@ public class App extends JFrame implements KeyListener{
 				}
 			}
 		}
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-           character.readCommands("E");
-        }
-
-        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-        	character.readCommands("O");
-        }
-
-        if(e.getKeyCode() == KeyEvent.VK_UP) {
-        	character.readCommands("N");
-        }
-
-        if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-        	character.readCommands("S");
-        }
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	
