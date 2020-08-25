@@ -81,4 +81,8 @@ public class Character {
 	public Point2D getPosition() {
 		return this.position;
 	}
+	
+	public int getPoints() {
+		return this.points;
+	}
 }

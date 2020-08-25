@@ -3,13 +3,12 @@ package com.main.wall_e;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class App extends JFrame {
@@ -17,6 +16,7 @@ public class App extends JFrame {
 	private static Character character;
 	private static JFrame mainFrame = new JFrame("Wall-E");
 	private static JPanel panel = new JPanel();
+	private static JLabel pointsLabel;
 	
 	private static final int WINDOW_WIDTH = 600;
 	private static final int WINDOW_HEIGHT = 600;
@@ -26,8 +26,13 @@ public class App extends JFrame {
 	private static final int SQUARE_CONTENT_PADDING = 1;
 	
 	public App (){
+		character = new Character("Wall-E", 0, 0);
 	    getContentPane().add(panel);
 	    setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+	    pointsLabel = new JLabel("Collected trash balls: " + character.getPoints());
+	    panel.add(pointsLabel);
+	    pointsLabel.setVerticalTextPosition(JLabel.TOP);
+		pointsLabel.setHorizontalTextPosition(JLabel.LEFT);
 	}
 	
 	public void paint(Graphics g) {
@@ -36,12 +41,12 @@ public class App extends JFrame {
 	    drawGrid(g2);
 	    drawCharacter(g2);
 	    drawTrashBalls(g2);
+	    drawPoints();
 	}
 	
 	public static void main(String[] args) {
 		App app = new App();
 		app.setVisible(true);
-		character = new Character("Wall-E", 0, 0);
 		String commands = "";
 		while(!commands.equals("#")) {
 			Scanner input = new Scanner(System.in);
@@ -93,5 +98,10 @@ public class App extends JFrame {
 		}
 	}
 	
+	public void drawPoints() {
+		pointsLabel.setText("Collected trash balls: " + character.getPoints());
+		pointsLabel.setOpaque(false);
+		pointsLabel.repaint();
+	}
 	
 }
