@@ -43,6 +43,7 @@ class CharacterTest {
 
 	@Test
 	void testHasBeenAtCurrentPosition() {
+		//current position is (0,0)
 		assertTrue(character.hasBeenAtCurrentPosition());
 	}
 

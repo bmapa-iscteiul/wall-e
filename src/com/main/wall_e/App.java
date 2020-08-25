@@ -70,15 +70,16 @@ public class App extends JFrame {
 		 int x = (int)character.getPosition().getX();
 		 int y = (int)character.getPosition().getY();
 		    
-		 g.fillRect( SQUARE_CONTENT_PADDING + (WINDOW_WIDTH/2) + x * SQUARE_SIZE , SQUARE_CONTENT_PADDING + (WINDOW_HEIGHT/2) + y* SQUARE_SIZE, CHARACTER_WIDTH , CHARACTER_HEIGHT);
-		    
+		 //g.fillRect( SQUARE_CONTENT_PADDING + (WINDOW_WIDTH/2) + x * SQUARE_SIZE , SQUARE_CONTENT_PADDING + (WINDOW_HEIGHT/2) + y* SQUARE_SIZE, CHARACTER_WIDTH , CHARACTER_HEIGHT);
+		 g.fillRect(SQUARE_CONTENT_PADDING + (WINDOW_WIDTH/2), SQUARE_CONTENT_PADDING + (WINDOW_HEIGHT/2), CHARACTER_WIDTH , CHARACTER_HEIGHT);
+		 
 	}
 	
 	public void drawTrashBalls(Graphics2D g) {
 		for(int i = 0; i < WINDOW_WIDTH; i=i+SQUARE_SIZE) {
 			for(int j = 0; j < WINDOW_HEIGHT; j=j+SQUARE_SIZE) {
-				int x_point = (i - WINDOW_WIDTH/2) /SQUARE_SIZE; 
-				int y_point = (j - WINDOW_HEIGHT/2) /SQUARE_SIZE; 
+				int x_point = (i - WINDOW_WIDTH/2) /SQUARE_SIZE + (int)character.getPosition().getX(); 
+				int y_point = (j - WINDOW_HEIGHT/2) /SQUARE_SIZE + (int)character.getPosition().getY(); 
 				Point2D point = new Point2D.Double((double) x_point, (double) y_point);
 				if(!character.getAllPreviousPositions().contains(point)) {
 					g.setColor(Color.RED);
